@@ -1,4 +1,5 @@
-var data = [
+var Table = {};
+Table.data = [
   {
     login: "mojombo",
     id: 1,
@@ -33,6 +34,17 @@ var data = [
   }
 ];
 
-$(document).ready(function() {
-  $(".container").tableizer({ data: data, search: true });
-});
+Table.ready = function() {
+  if (document.readyState != 'loading'){
+    Table.tableizer();
+  } else {
+    document.addEventListener('DOMContentLoaded', Table.tableizer);
+  }
+}
+
+Table.tableizer = function() {
+  // var array = [document.getElementById('container')];
+  // array.tableizer({ data: Table.data, search: true });
+};
+
+Table.ready();

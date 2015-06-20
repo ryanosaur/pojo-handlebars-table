@@ -1,8 +1,8 @@
-$.fn.tableizer = function(options) {
+Array.prototype.tableizer = function(options) {
   var data = options.data;
   var search = options.search;
 
-  this.each(function(i, e) {
+  this.forEach(function(e) {
     var $table = $("<table class='table'><thead class='table-head'> <tr> </tr> </thead> <tbody class='table-body'> </tbody> </table>");
 
     var userKeys = Object.keys(data[0]);
