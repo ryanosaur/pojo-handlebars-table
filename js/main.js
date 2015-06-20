@@ -33,6 +33,21 @@ var data = [
   }
 ];
 
+
 $(document).ready(function() {
-  $(".container").tableizer({ data: data, search: true });
+var headSource   = $("#header-template").html();
+var template = Handlebars.compile(headSource);
+var headContext = { data: data[0] };
+var headHtml = template(headContext);
+
+var source   = $("#entry-template").html();
+var template = Handlebars.compile(source);
+var context = { data: data };
+var html    = template(context);
+
+  // $(".container").tableizer({ data: data, search: true });
+  $(".container1").html(headHtml);
+  $(".table").append(html);
+
+  console.log(headHtml);
 });

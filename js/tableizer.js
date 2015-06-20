@@ -1,4 +1,5 @@
 $.fn.tableizer = function(options) {
+  console.log(options);
   var data = options.data;
   var search = options.search;
 
