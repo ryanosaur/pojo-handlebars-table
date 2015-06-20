@@ -36,9 +36,9 @@ Table.data = [
 
 Table.ready = function() {
   if (document.readyState != 'loading'){
-    Table.tableizer();
+    Table.init();
   } else {
-    document.addEventListener('DOMContentLoaded', Table.tableizer);
+    document.addEventListener('DOMContentLoaded', Table.init);
   }
 }
 
@@ -47,4 +47,24 @@ Table.tableizer = function() {
   // array.tableizer({ data: Table.data, search: true });
 };
 
+Table.init = function(){
+  Table.tableizer();
+  var headSource   = $("#header-template").html();
+  var template = Handlebars.compile(headSource);
+  var headContext = { data: data[0] };
+  var headHtml = template(headContext);
+
+  var source   = $("#entry-template").html();
+  var template = Handlebars.compile(source);
+  var context = { data: data };
+  var html    = template(context);
+
+  // $(".container").tableizer({ data: data, search: true });
+  $(".container1").html(headHtml);
+  $(".table").append(html);
+
+  console.log(headHtml);
+}
+
 Table.ready();
+
